@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Routine Studio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23102a43'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-size='13' font-family='Arial' font-weight='700' fill='white'%3ERS%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <div class="sticky-chrome">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">RS</div>
+          <div>
+            <h1>Routine Studio</h1>
+            <p>Collision-aware class and faculty routine builder</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="btn ghost" id="loadDemoBtn" title="Load a rich sample data set"><i data-lucide="sparkles"></i><span>Demo</span></button>
+          <button class="btn ghost" id="importJsonBtn" title="Import a saved Routine Studio project"><i data-lucide="folder-open"></i><span>Import</span></button>
+          <button class="btn ghost" id="exportJsonBtn" title="Export the whole project as JSON"><i data-lucide="save"></i><span>Project</span></button>
+          <button class="btn primary" id="quickGenerateBtn" title="Generate the best routine now"><i data-lucide="wand-2"></i><span>Generate</span></button>
+        </div>
+      </header>
+
+      <nav class="tabbar" aria-label="Application sections">
+        <button class="tab active" data-tab="setup"><i data-lucide="calendar-days"></i><span>Semesters</span></button>
+        <button class="tab" data-tab="faculty"><i data-lucide="users"></i><span>Faculty</span></button>
+        <button class="tab" data-tab="subjects"><i data-lucide="book-open"></i><span>Subjects</span></button>
+        <button class="tab" data-tab="constraints"><i data-lucide="shield-alert"></i><span>Blocks</span></button>
+        <button class="tab" data-tab="routine"><i data-lucide="table-2"></i><span>Routine</span></button>
+        <button class="tab" data-tab="export"><i data-lucide="download"></i><span>Export</span></button>
+      </nav>
+    </div>
+
+    <main>
+      <section id="setup" class="view active"></section>
+      <section id="faculty" class="view"></section>
+      <section id="subjects" class="view"></section>
+      <section id="constraints" class="view"></section>
+      <section id="routine" class="view"></section>
+      <section id="export" class="view"></section>
+    </main>
+  </div>
+
+  <input id="jsonFile" type="file" accept="application/json" hidden>
+  <input id="csvFile" type="file" accept=".csv,text/csv" hidden>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
